@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Beauty</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            background-color: #000000; /* Black background */
+            color: #FFFFFF; /* White font color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            text-align: center;
+            background-color: #333333; /* Dark grey container */
+            padding: 0px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            opacity: 0;
+            transform: scale(1);
+            animation: fadeInGrow 3s forwards;
+            max-width: 90vw; /* Ensure container fits within the viewport width */
+            overflow: hidden; /* Removing scrollability from the container */
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: filter 2s, opacity 2s;
+        }
+        .container.blur img {
+            filter: blur(20px);
+            opacity: 1;
+        }
+        .poem {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.7em; /* Increased font size */
+            color: #FFFFFF; /* White font color */
+            text-align: center;
+            padding: 0px;
+            background: rgba(0, 0, 0, 0); /* Adding a more opaque background for readability */
+            border-radius: 20px;
+            max-width: 98vw; /* Ensuring the poem fits the viewport width */
+            max-height: 98vh; /* Ensuring the poem doesn't exceed the container height */
+            overflow-y: auto; /* Allowing the poem to be scrollable */
+            opacity: 0;
+            transition: opacity 8s;
+            word-wrap: break-word; /* Preventing long words from overflowing */
+            animation: colorChange 6s infinite; /* Add color change animation */
+        }
+        .poem.show {
+            opacity: 1;
+        }
+        @keyframes fadeInGrow {
+            from {
+                opacity: 0;
+                transform: scale(0.4);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes colorChange {
+            0% {
+                color: #FFFFFF; /* White */
+            }
+            25% {
+                color: #FF6347; /* Tomato */
+            }
+            50% {
+                color: #32CD32; /* LimeGreen */
+            }
+            75% {
+                color: #1E90FF; /* DodgerBlue */
+            }
+            100% {
+                color: #FFFF00; /* Yellow */
+            }
+        }
+    </style>
+    <script>
+        let audio = new Audio('211.mp3'); // Load the audio file
+
+        // Function to start the audio and show the poem
+        function blurImageAndShowPoem() {
+            const container = document.querySelector('.container');
+            const poem = document.querySelector('.poem');
+
+            // Play audio when the user clicks
+            audio.play();
+
+            // Add classes to blur the image and show the poem
+            container.classList.add('blur');
+            poem.classList.add('show');
+        }
+    </script>
+</head>
+<body>
+    <!-- The audio is loaded in the background but starts playing on click -->
+    <div class="container" onclick="blurImageAndShowPoem()">
+        <img src="21.jpg" alt="Her Beauty">
+        <div class="poem">
+            <p>Her gaze, a whisper, tender, sweet,</p>
+            <p>With every glance, hearts miss a beat.</p>
+            <p>In those eyes, a story softly told,</p>
+            <p>Of love and grace, both fierce and bold.</p>
+            
+            <p>In the velvet night, her eyes alight,</p>
+            <p>Twin stars that pierce the endless night.</p>
+            <p>Deep within, a universe unfurls,</p>
+            <p>A dance of dreams, a world of pearls.</p>
+            
+            <p>Her lips, a bloom, in dawn's soft kiss,</p>
+            <p>A touch of magic, pure, and bliss.</p>
+            <p>With every smile, they sing a symphony,</p>
+            <p>Of joy, of warmth, in harmony.</p>
+            
+            <p>Her beauty, timeless, pure and true,</p>
+            <p>Eyes and lips, a masterpiece in view.</p>
+            <p>A muse, a dream, in light and shade,</p>
+            <p>In her embrace, all sorrows fade.</p>
+        </div>
+    </div>
+</body>
+</html>
